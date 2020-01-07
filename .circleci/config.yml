@@ -24,11 +24,11 @@ jobs:
           name: Validate Terraform configuration
           working_directory: terraform
           command: terraform validate
-     - run:
+      - run:
           name: Create Terraform plan
           working_directory: terraform
           command: terraform plan -out /tmp/tf.plan
-     - run:
+      - run:
          name: Run Terraform plan
         working_directory: terraform
         command: terraform apply /tmp/tf.plan
