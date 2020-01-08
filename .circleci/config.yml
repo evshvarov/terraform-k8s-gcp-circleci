@@ -6,7 +6,7 @@ orbs:
 jobs:
   terraform:
     docker:
-      - image: hashicorp/terraform:0.12.17
+      - image: hashicorp/terraform:0.12.18
     steps:
       - checkout
       - run:
