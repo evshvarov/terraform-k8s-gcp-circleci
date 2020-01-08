@@ -1,7 +1,7 @@
 terraform {
   required_version = "~> 0.12"
   backend "gcs" {
-    bucket      = "circleci-gke-terraform-demo"
+    bucket      = "circleci-gke-terraform-demo-1"
     prefix      = "terraform/state"
     credentials = "account.json"
   }
