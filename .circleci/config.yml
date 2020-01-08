@@ -6,7 +6,7 @@ orbs:
 jobs:
   terraform:
     docker:
-       - image: hashicorp/terraform:0.12.17
+      - image: hashicorp/terraform:0.12.17
     steps:
       - checkout
       - run:
@@ -29,9 +29,9 @@ jobs:
           working_directory: terraform
           command: terraform plan -out /tmp/tf.plan
       - run:
-         name: Run Terraform plan
-        working_directory: terraform
-        command: terraform apply /tmp/tf.plan
+          name: Run Terraform plan
+          working_directory: terraform
+          command: terraform apply /tmp/tf.plan
   k8s_deploy:
     docker:
       - image: kiwigrid/gcloud-kubectl-helm:3.0.1-272.0.0-218
@@ -46,7 +46,7 @@ jobs:
             gcloud container clusters get-credentials ${GKE_CLUSTER_NAME} --zone ${GOOGLE_COMPUTE_ZONE} --project ${GOOGLE_PROJECT_ID}
       - run:
           name: Wait a little until k8s worker nodes up
-          command: sleep 30 # It’s a place for improvement
+          command: sleep 30
       - run:
           name: Create IRIS namespace if it doesn't exist
           command: kubectl get ns iris || kubectl create ns iris
@@ -89,3 +89,4 @@ workflows:
           requires:
             - terraform
             - gcp-gcr/build-and-push-image
+
